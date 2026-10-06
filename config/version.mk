@@ -17,8 +17,16 @@ ifndef LINEAGE_BUILDTYPE
     endif
 endif
 
+# Bluenixx: OFFICIAL só com flag de mantenedor + product mantido por ele
+ifeq ($(LINEAGE_BUILDTYPE),OFFICIAL)
+    ifeq ($(filter $(BLUENIXX_MAINTAINER):$(TARGET_PRODUCT),$(shell cat vendor/lineage/bluenixx.maintainers 2>/dev/null)),)
+        $(info Bluenixx: OFFICIAL negado para '$(BLUENIXX_MAINTAINER):$(TARGET_PRODUCT)', build vira UNOFFICIAL)
+        LINEAGE_BUILDTYPE := UNOFFICIAL
+    endif
+endif
+
 # Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
+ifeq ($(filter OFFICIAL RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
     LINEAGE_BUILDTYPE := UNOFFICIAL
     LINEAGE_EXTRAVERSION :=
 endif
