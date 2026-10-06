@@ -12,8 +12,8 @@ function check_product()
         echo "Couldn't locate the top of the tree. Try setting TOP." >&2
         return
     fi
-    if (echo -n $1 | grep -q -e "^lineage_") ; then
-        LINEAGE_BUILD=$(echo -n $1 | sed -e 's/^lineage_//g')
+    if (echo -n $1 | grep -q -e "^bluenixx_") ; then
+        LINEAGE_BUILD=$(echo -n $1 | sed -e 's/^bluenixx_//g')
     else
         LINEAGE_BUILD=
     fi
@@ -59,7 +59,7 @@ function breakfast()
                 variant="userdebug"
             fi
 
-            lunch lineage_$target-$aosp_target_release-$variant
+            lunch bluenixx_$target-$aosp_target_release-$variant
         fi
     fi
     return $?
@@ -232,7 +232,7 @@ function lineageremote()
     if [ $LINEAGE = "false" ]
     then
         local PROJECT=$(echo $REMOTE | sed -e "s#platform/#android/#g; s#/#_#g")
-        local PFX="LineageOS/"
+        local PFX="Bluenixx/"
     else
         local PROJECT=$REMOTE
     fi
@@ -326,7 +326,7 @@ function githubremote()
 
     local PROJECT=$(echo $REMOTE | sed -e "s#platform/#android/#g; s#/#_#g")
 
-    git remote add github https://github.com/LineageOS/$PROJECT
+    git remote add github https://github.com/Bluenixx/$PROJECT
     echo "Remote 'github' created"
 }
 

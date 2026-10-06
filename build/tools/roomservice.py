@@ -252,7 +252,7 @@ def add_to_manifest(dependencies):
 
 def fetch_dependencies(repo_path):
     print(f'Looking for dependencies in {repo_path}')
-    dependencies_path = repo_path + '/lineage.dependencies'
+    dependencies_path = repo_path + '/bluenixx.dependencies'
     syncable_repos = []
     verify_repos = []
 
