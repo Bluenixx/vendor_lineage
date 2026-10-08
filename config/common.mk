@@ -312,3 +312,7 @@ include vendor/lineage/config/version.mk
 ifeq ($(WITH_GMS),true)
 $(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
 endif
+
+# Maintainer
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.bluenixx.maintainer="$(BLUENIXX_MAINTAINER)"
