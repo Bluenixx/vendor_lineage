@@ -316,3 +316,9 @@ endif
 # Maintainer
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.bluenixx.maintainer="$(BLUENIXX_MAINTAINER)"
+
+# Overmorrow
+ifeq ($(INCLUDE_OVERMORROW),true)
+PRODUCT_PACKAGES += \
+    Overmorrow
+endif
