@@ -70,3 +70,7 @@ PRODUCT_PRODUCT_PROPERTIES += ro.bluenixx.flavor=$(BLUENIXX_FLAVOR)
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.bluenixx.version=$(BLUENIXX_VERSION) \
     ro.bluenixx.codename=$(BLUENIXX_CODENAME)
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.bluenixx.build.date=$(LINEAGE_BUILD_DATE) \
+    ro.bluenixx.buildtype=$(LINEAGE_BUILDTYPE)

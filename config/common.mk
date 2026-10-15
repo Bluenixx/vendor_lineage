@@ -322,3 +322,11 @@ ifeq ($(INCLUDE_OVERMORROW),true)
 PRODUCT_PACKAGES += \
     Overmorrow
 endif
+# Bluenixx: desempenho e visual
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    Launcher3QuickStep \
+    Settings
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.surface_flinger.supports_background_blur=1 \
+    ro.config.media_vol_steps=25
