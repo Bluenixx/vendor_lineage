@@ -3,7 +3,7 @@ PRODUCT_VERSION_MINOR = 0
 
 # Bluenixx: versao e codinome da ROM (override com env: BLUENIXX_VERSION=1.1 BLUENIXX_CODENAME=xxx)
 BLUENIXX_VERSION ?= 1.0
-BLUENIXX_CODENAME ?= big-bang
+BLUENIXX_CODENAME ?= BIG-BANG
 
 ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
     LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d_%H%M%S)
