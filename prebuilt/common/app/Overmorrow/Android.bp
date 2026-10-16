@@ -7,5 +7,6 @@ android_app_import {
     },
     privileged: false,
     preprocessed: true,
+    skip_preprocessed_apk_checks: true,
     product_specific: true,
 }
