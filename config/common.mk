@@ -325,3 +325,8 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.surface_flinger.supports_background_blur=1 \
     ro.config.media_vol_steps=25
+
+ifeq ($(SURFACE_FLINGER_BOOST),true)
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.surface_flinger.uclamp.min=135
+endif
