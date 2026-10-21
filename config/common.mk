@@ -317,11 +317,6 @@ endif
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.bluenixx.maintainer="$(BLUENIXX_MAINTAINER)"
 
-# Overmorrow
-ifeq ($(INCLUDE_OVERMORROW),true)
-PRODUCT_PACKAGES += \
-    Overmorrow
-endif
 # Bluenixx: desempenho e visual
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     Launcher3QuickStep \
