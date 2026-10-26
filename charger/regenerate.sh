@@ -1,28 +1,20 @@
 #!/bin/bash
+#
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+# Re-renders every PNG in this folder (Material 3 Expressive style).
+# Needs: python3, numpy, scipy, opencv-python, pillow and Poppins-Medium.ttf
+# (set POPPINS_TTF=/path/to/Poppins-Medium.ttf if it is not auto-detected).
 
-if [ -z "$(which convert)" ] || [ -z "$(which pngcrush)" ]; then
-    echo "Please install imagemagick and pngcrush"
-    exit 1
-fi
+set -e
+cd "$(dirname "$0")"
 
-for DENSITY in mdpi:160 hdpi:240 xhdpi:320 xxhdpi:480 xxxhdpi:640; do
-    DPI=$(echo $DENSITY | cut -f1 -d ':')
-    WIDTH=$(echo $DENSITY | cut -f2 -d ':')
-
-    rm $DPI/battery_fail.png
-    rm $DPI/battery_scale.png
-
-    for SVG in svg/*.svg; do
-        PNG="$DPI/$(basename $SVG | cut -f1 -d '.').png"
-        convert -density $WIDTH -resize ${WIDTH}x${WIDTH} $SVG png24:$PNG
-    done
-
-    SCALEFILE="$DPI/battery_scale.png"
-    SCALEFILES="$(ls $DPI/battery_scale_*.png)"
-    FRAMES="$(ls -l $SCALEFILES | wc -l)"
-    SCALEHEIGHT=$(($WIDTH * $FRAMES))
-
-    convert -size ${WIDTH}x${SCALEHEIGHT} canvas:black $SCALEFILES -fx "u[j%$FRAMES+1].p{i,int(j/$FRAMES)}" png24:$SCALEFILE.tmp
-    pngcrush -text b "Frames" "$FRAMES" $SCALEFILE.tmp $SCALEFILE
-    rm $SCALEFILES $SCALEFILE.tmp
+for mod in numpy scipy cv2 PIL; do
+    python3 -c "import $mod" 2>/dev/null || {
+        echo "Missing python module: $mod (pip install numpy scipy opencv-python pillow)"
+        exit 1
+    }
 done
+
+exec python3 regenerate.py
