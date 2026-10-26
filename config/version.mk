@@ -23,7 +23,7 @@ endif
 
 # Bluenixx: OFFICIAL só com flag de mantenedor + product mantido por ele
 ifeq ($(LINEAGE_BUILDTYPE),OFFICIAL)
-    ifeq ($(filter $(BLUENIXX_MAINTAINER):$(TARGET_PRODUCT),$(shell cat vendor/lineage/bluenixx.maintainers 2>/dev/null)),)
+    ifeq ($(filter $(BLUENIXX_MAINTAINER):$(TARGET_PRODUCT),$(shell cat vendor/bluenixx_maintainers/bluenixx.maintainers 2>/dev/null)),)
         $(info Bluenixx: OFFICIAL negado para '$(BLUENIXX_MAINTAINER):$(TARGET_PRODUCT)', build vira UNOFFICIAL)
         LINEAGE_BUILDTYPE := UNOFFICIAL
     endif
